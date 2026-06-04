@@ -1,5 +1,6 @@
 .claude/
 *.mp4
+*.docx
 node_modules/
 .DS_Store
 Thumbs.db
