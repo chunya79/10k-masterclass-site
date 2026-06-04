@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$10K A Month Masterclass With Regan Hillyer</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAJCkWPsQsaRng9ej2puFZj-IKW5SESyh5FcsaFuu24gqC1iBc4eBTZOuCNPQFhGQF33tWZUcjr05AxGE&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #f0d080;
+      --dark: #0d0b14;
+      --dark2: #13101f;
+      --purple: #5b2d8e;
+      --purple-light: #7c3dbf;
+      --text: #e8e0f0;
+      --muted: #a090c0;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d0b14 0%, #1a0d30 50%, #0d0b14 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,45,142,0.4) 0%, transparent 70%);
+      top: -150px; left: -150px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      color: #1a0d00;
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 24px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.15;
+      color: var(--white);
+      max-width: 900px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-family: Arial, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--muted);
+      max-width: 650px;
+      margin: 16px auto 40px;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(201,168,76,0.15);
+      margin-bottom: 48px;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .price-box {
+      background: linear-gradient(135deg, rgba(91,45,142,0.3), rgba(13,11,20,0.6));
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 20px;
+      padding: 36px 48px;
+      margin-bottom: 36px;
+      backdrop-filter: blur(10px);
+      max-width: 460px;
+      width: 100%;
+    }
+
+    .price-now {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .price-note {
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+      color: #1a0800;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 20px 48px;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 50px rgba(201,168,76,0.5);
+    }
+
+    .secure {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .pay-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-top: 4px;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .pay-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      margin: 16px 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    .pay-divider::before, .pay-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn-paypal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffc439;
+      color: #003087;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      padding: 18px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(255,196,57,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-paypal:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,196,57,0.45); }
+
+    .btn-stripe {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #635bff;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      padding: 18px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(99,91,255,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-stripe:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(99,91,255,0.5); }
+
+    .pay-label {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 20px; }
+
+    .section-inner { max-width: 960px; margin: 0 auto; }
+
+    .section-label {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    h2 span {
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p { color: var(--muted); font-size: 1.05rem; }
+
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 3px;
+      margin: 20px 0 32px;
+    }
+
+    /* ABOUT REGAN */
+    .about-bg {
+      background: linear-gradient(135deg, #0d0b14 0%, #180d2e 100%);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(91,45,142,0.2);
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+
+    /* WHAT YOU GET */
+    .what-bg {
+      background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%);
+    }
+
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .include-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .include-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-4px);
+    }
+
+    .include-icon { font-size: 2.2rem; margin-bottom: 14px; }
+
+    .include-card h3 {
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .include-card p { font-size: 0.9rem; }
+
+    /* FOR YOU */
+    .for-bg {
+      background: linear-gradient(135deg, #0d0b14 0%, #180d2e 100%);
+    }
+
+    .for-list {
+      list-style: none;
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .for-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(91,45,142,0.25);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .for-list li .check { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* TESTIMONIALS */
+    .test-bg {
+      background: linear-gradient(180deg, var(--dark2) 0%, var(--dark) 100%);
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .test-grid img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(201,168,76,0.1);
+      transition: transform 0.2s, border-color 0.2s;
+      display: block;
+    }
+
+    .test-grid img:hover {
+      transform: scale(1.03);
+      border-color: rgba(201,168,76,0.4);
+    }
+
+    /* CTA */
+    .cta-bg {
+      background: linear-gradient(135deg, #180d30 0%, #0d0b14 100%);
+      text-align: center;
+    }
+
+    .cta-bg .price-box { margin: 0 auto 36px; }
+
+    /* CAROUSEL */
+    .carousel-wrap {
+      position: relative;
+      margin-top: 40px;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-track img {
+      flex-shrink: 0;
+      width: 280px;
+      border-radius: 12px;
+      border: 1px solid rgba(201,168,76,0.1);
+      object-fit: cover;
+      transition: border-color 0.2s;
+    }
+
+    .carousel-track img:hover { border-color: rgba(201,168,76,0.4); }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+
+    .carousel-btn:hover { background: rgba(201,168,76,0.3); }
+    .carousel-btn.prev { left: -24px; }
+    .carousel-btn.next { right: -24px; }
+
+    /* FAQ */
+    .faq-bg {
+      background: linear-gradient(135deg, #0d0b14 0%, #180d2e 100%);
+    }
+
+    .faq-list {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      padding: 22px 28px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q .icon {
+      color: var(--gold);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 0 28px;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 28px 22px;
+    }
+
+    /* DISCLAIMER */
+    .disclaimer-bg {
+      background: #080610;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 60px 20px;
+    }
+
+    .disclaimer-bg .section-inner { max-width: 860px; }
+
+    .disclaimer-toggle {
+      width: 100%;
+      background: none;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0;
+      transition: border-color 0.2s;
+    }
+
+    .disclaimer-toggle:hover { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+
+    .disclaimer-toggle .icon { color: var(--gold); font-size: 1.1rem; transition: transform 0.3s; }
+    .disclaimer-toggle.open .icon { transform: rotate(45deg); }
+
+    .disclaimer-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: #4a3d60;
+      line-height: 1.8;
+      padding: 0 24px;
+      border: 1px solid rgba(201,168,76,0.1);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .disclaimer-body.open {
+      max-height: 1000px;
+      padding: 24px;
+    }
+
+    .disclaimer-body p { margin-bottom: 12px; }
+    .disclaimer-body p:last-child { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      background: #080610;
+      text-align: center;
+      padding: 32px 20px;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: #3d3050;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    footer a { color: #6a5a80; text-decoration: underline; }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .about-inner { grid-template-columns: 1fr; }
+      .price-box { padding: 28px 24px; }
+      .price-now { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">Intensive Workshop</div>
+    <h1>Unlock Your<br><span>$10K A Month</span></h1>
+    <p class="hero-sub">Join Regan Hillyer's proven masterclass and discover the exact strategies and mindset shifts behind generating a consistent $10,000 a month — regardless of your industry or starting point.</p>
+
+    <img
+      class="hero-img"
+      src="Creative Assets-20260530T073310Z-3-001/Creative Assets/10k image (1).jpg"
+      alt="$10K A Month Masterclass with Regan Hillyer"
+    />
+
+    <div class="price-box">
+      <div class="price-now">$97</div>
+      <div class="price-note">One-time investment &nbsp;·&nbsp; Your access link will be sent to your email</div>
+    </div>
+
+    <a href="#join" class="btn">Join the Masterclass — $97 →</a>
+    <div class="secure">🔒 Pay via PayPal account or credit/debit card &nbsp;·&nbsp; Your access link will be sent to your email</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-bg">
+    <div class="section-inner">
+      <div class="about-inner">
+        <img
+          class="about-img"
+          src="Creative Assets-20260530T073310Z-3-001/Creative Assets/10k-A-Month-MRR-Story.jpg"
+          alt="Regan Hillyer"
+        />
+        <div>
+          <div class="section-label">About the Workshop</div>
+          <h2>The Strategies Behind <span>Real, Consistent Income</span></h2>
+          <div class="divider"></div>
+          <p style="margin-bottom:16px;">The <em>$10K A Month Masterclass with Regan</em> is a powerful 2-hour intensive designed to help you break through income blocks and create a reliable, scalable income — month after month.</p>
+          <p style="margin-bottom:16px;">Regan Hillyer has spent years refining the internal and external strategies that generate $10K months. In this workshop, she hands you every tool, technique, and mindset shift — so you can start applying them immediately.</p>
+          <p>No fluff, no vague advice. Just a proven method that works.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="what-bg">
+    <div class="section-inner">
+      <div class="section-label">What's Included</div>
+      <h2>Everything Inside the <span>$97 Masterclass</span></h2>
+      <div class="divider"></div>
+      <div class="includes-grid">
+        <div class="include-card">
+          <div class="include-icon">🎓</div>
+          <h3>2-Hour Live Workshop Recording</h3>
+          <p>Regan's full, intensive masterclass — the strategies, mindset shifts, and step-by-step method for generating $10K+ months, every month.</p>
+        </div>
+        <div class="include-card">
+          <div class="include-icon">🧰</div>
+          <h3>Proven Tools & Techniques</h3>
+          <p>Every strategy Regan has used and tested across her years in business — curated and ready for you to apply immediately to your own income goals.</p>
+        </div>
+        <div class="include-card">
+          <div class="include-icon">💡</div>
+          <h3>Internal & External Strategies</h3>
+          <p>It's not just about tactics — Regan dives into the frequency, beliefs, and identity shifts that make $10K months feel natural and repeatable.</p>
+        </div>
+        <div class="include-card">
+          <div class="include-icon">🌐</div>
+          <h3>Community Access</h3>
+          <p>Connect with a vibrant community on our Mighty Networks platform — share wins, get support, and grow alongside like-minded people on the same journey.</p>
+        </div>
+        <div class="include-card">
+          <div class="include-icon">♾️</div>
+          <h3>Lifetime Access</h3>
+          <p>This isn't a one-time watch. Revisit the workshop whenever you need a reset, a boost, or a reminder of what's possible — at your own pace, on your own schedule.</p>
+        </div>
+        <div class="include-card">
+          <div class="include-icon">🧠</div>
+          <h3>Manifestation & Money Mindset</h3>
+          <p>Regan dives deep into the frequency, beliefs, and identity work that separates people who occasionally earn $10K from those who do it every single month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="for-bg">
+    <div class="section-inner">
+      <div class="section-label">Is This You?</div>
+      <h2>This Workshop Is Perfect For You If…</h2>
+      <div class="divider"></div>
+      <ul class="for-list">
+        <li><span class="check">🚀</span> You're ready to call in massive success and play a bigger game.</li>
+        <li><span class="check">🚀</span> You sometimes hit $10K months but can't do it consistently.</li>
+        <li><span class="check">🚀</span> You're brand new to big money goals and want a real starting point.</li>
+        <li><span class="check">🚀</span> You're already at $10K a month and want to expand well beyond it.</li>
+        <li><span class="check">🚀</span> You're ready to break free from money fears and limiting beliefs.</li>
+        <li><span class="check">🚀</span> You've tried other strategies that didn't deliver — and want something that actually works.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="test-bg">
+    <div class="section-inner">
+      <div class="section-label">Real Results</div>
+      <h2>See What People Are <span>Saying</span></h2>
+      <div class="divider"></div>
+      <p>Hundreds of people have already transformed their income using Regan's $10K A Month methodology. Here's what they're sharing.</p>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev" onclick="slideCarousel(-1)">&#8592;</button>
+        <div class="carousel-track" id="carouselTrack">
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k1.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k2.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k3.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k4.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k5.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k6.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k7.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k8.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k9.jpeg" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k11.PNG" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k13.PNG" alt="Testimonial" />
+          <img src="Testimonials-20260530T073323Z-3-001/Testimonials/Testimonial 10k3a.jpeg" alt="Testimonial" />
+        </div>
+        <button class="carousel-btn next" onclick="slideCarousel(1)">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-bg">
+    <div class="section-inner">
+      <div class="section-label">Got Questions?</div>
+      <h2>Frequently Asked <span>Questions</span></h2>
+      <div class="divider"></div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What exactly is the $10K A Month Masterclass?
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-a">It's a 2-hour intensive workshop by Regan Hillyer — one of the world's leading manifestation and business coaches. The masterclass covers the exact internal strategies, mindset shifts, and practical tools behind generating a consistent $10,000+ per month, regardless of your industry or background.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How do I get access after purchasing?
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-a">Once your payment is confirmed, you'll receive a receipt. You'll then need to complete a short registration form — after that, a welcome email with your personal access link to the Mighty Networks platform will be sent to you.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is this suitable if I'm brand new to this?
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-a">Absolutely. The masterclass is designed for all levels — whether you've never set a big income goal before or you're already generating $10K months but want to do it more consistently. Regan starts from the foundations and builds up.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Are there any ongoing fees after my $97 purchase?
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-a">No. Your $97 is a one-time payment. There are no subscriptions, no hidden fees, and no upsells required to access the full masterclass.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Does this work for any industry?
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-a">Yes — the strategies in this masterclass are not niche-specific. They are internal and external frameworks that work across industries, whether you're a coach, service provider, creative, entrepreneur, or building something brand new.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is there a refund policy?
+            <span class="icon">+</span>
+          </button>
+          <div class="faq-a">Due to the digital nature of this product, all sales are final and there are no refunds. Please review the details carefully before purchasing.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-bg" id="join">
+    <div class="section-inner">
+      <div class="section-label">Ready to Start?</div>
+      <h2>Join the Masterclass<br><span>for Just $97 Today</span></h2>
+      <div class="divider" style="margin: 20px auto 32px;"></div>
+      <p style="max-width:540px; margin: 0 auto 40px;">One investment. The exact strategies, tools, and mindset shifts Regan has used to help thousands of people build consistent $10K months — and beyond.</p>
+
+      <div class="price-box">
+        <div class="price-now">$97</div>
+        <div class="price-note">One-time payment &nbsp;·&nbsp; Your access link will be sent to your email &nbsp;·&nbsp; No recurring fees</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:400px; margin:0 auto;">
+        <div id="paypal-container-67NBNQTRJFHVU-2" style="width:100%;"></div>
+        <script>
+          paypal.HostedButtons({ hostedButtonId: "67NBNQTRJFHVU" }).render("#paypal-container-67NBNQTRJFHVU-2");
+        </script>
+        <div style="margin-top:16px; text-align:center; font-family:Arial,sans-serif;">
+          <p style="color:var(--text); font-size:0.95rem; margin-bottom:6px;">🔒 <strong>No PayPal account needed</strong> — pay with any credit or debit card</p>
+          <p style="color:var(--muted); font-size:0.8rem;">Your access link will be sent to your email after registration</p>
+        </div>
+        <div style="margin-top:16px; background:rgba(255,196,57,0.1); border:1px solid rgba(255,196,57,0.3); border-radius:12px; padding:14px 20px; text-align:center; width:100%;">
+          <p style="color:#f0d080; font-family:Arial,sans-serif; font-size:0.9rem;">✅ Paid via PayPal? <a href="https://unlock10kmonthly.com/thank-you.html" style="color:#ffc439; font-weight:700;">Click here for your receipt and next steps →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARNINGS DISCLAIMER -->
+  <section class="disclaimer-bg">
+    <div class="section-inner">
+      <button class="disclaimer-toggle" onclick="toggleDisclaimer(this)">
+        Terms, Conditions &amp; Earnings Disclaimer
+        <span class="icon">+</span>
+      </button>
+      <div class="disclaimer-body">
+        <p><strong>EARNINGS DISCLAIMER</strong></p>
+        <p>Renee Swain ("we") makes every effort to accurately represent this workshop and its potential. Nevertheless, we cannot and do not make any guarantees about your ability to get results or earn any money with the information provided in the $10K A Month Masterclass. Nothing on this site or in this course is a promise or guarantee of results or future earnings, and we do not offer any legal, medical, tax, financial or other professional advice.</p>
+        <p>Any financial numbers referenced here or in the course materials are illustrative of results that others have achieved and should not be considered average earnings, exact earnings, or promises for actual or future performance. As with any endeavour, your results may vary and will be based on your individual capacity, effort, experience, and level of desire.</p>
+        <p>There are no guarantees concerning the level of success you may experience. The testimonials and examples used are exceptional results which do not apply to the average purchaser, and are not intended to represent or guarantee that anyone will achieve the same or similar results. Each individual's success depends on their background, dedication, desire and motivation.</p>
+        <p>There is no assurance that examples of past earnings can be duplicated in the future. We cannot guarantee your future results and/or success. Your participation in this workshop should be based on your own due diligence, and you agree that we and our licensors are not liable for any success or failure directly or indirectly related to your purchase and use of this product.</p>
+        <p><strong>REFUND POLICY:</strong> Due to the digital nature of this product, all sales are final. No refunds will be issued once access has been granted.</p>
+        <p><strong>DISTRIBUTION RIGHTS:</strong> This product is licensed under Regan Hillyer International's Master Resell Rights agreement. The course may not be sold for less than US$97, given away for free, or offered as a bonus to another product. Videos may not be modified in any way. Full terms apply — please review Regan Hillyer International's Distribution Rights agreement at reganhillyer.com before purchasing.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>$10K A Month Masterclass is a programme by <a href="https://reganhillyer.com" target="_blank">Regan Hillyer International</a></p>
+    <p style="margin-top:8px;">© Regan Hillyer International LLC-FZ &nbsp;·&nbsp; support@reganhillyer.com</p>
+  </footer>
+
+  <script>
+    // Carousel
+    let carouselIndex = 0;
+    function slideCarousel(dir) {
+      const track = document.getElementById('carouselTrack');
+      const imgs = track.querySelectorAll('img');
+      const cardWidth = 300; // img width + gap
+      const visible = Math.floor(track.parentElement.offsetWidth / cardWidth);
+      const max = imgs.length - visible;
+      carouselIndex = Math.max(0, Math.min(carouselIndex + dir, max));
+      track.style.transform = `translateX(-${carouselIndex * cardWidth}px)`;
+    }
+
+    // Disclaimer
+    function toggleDisclaimer(btn) {
+      btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open');
+    }
+
+    // FAQ
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You – $10K A Month Masterclass</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #f0d080;
+      --dark: #0d0b14;
+      --purple: #5b2d8e;
+      --text: #e8e0f0;
+      --muted: #a090c0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0d0b14 0%, #1a0d30 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .check-icon {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 40px rgba(46,204,113,0.3);
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 2.2rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    /* RECEIPT */
+    .receipt {
+      background: #fff;
+      color: #1a1a2e;
+      border-radius: 16px;
+      padding: 40px 48px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin-bottom: 32px;
+    }
+
+    .receipt-header {
+      text-align: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .receipt-header .brand {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #3d1a6e;
+    }
+
+    .receipt-header .receipt-title {
+      font-size: 0.8rem;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+    }
+
+    .receipt-row:last-of-type { border-bottom: none; }
+
+    .receipt-row .label {
+      color: #888;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .receipt-row .value {
+      font-weight: 600;
+      color: #1a1a2e;
+      text-align: right;
+    }
+
+    .receipt-total {
+      background: #f8f4ff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .receipt-total .total-label {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #3d1a6e;
+    }
+
+    .receipt-total .total-amount {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #3d1a6e;
+    }
+
+    .receipt-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .print-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #f0f0f0;
+      color: #333;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+      transition: background 0.2s;
+    }
+
+    .print-btn:hover { background: #e0e0e0; }
+
+    /* NEXT STEPS */
+    .next-steps {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .step-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), #9b59b6);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      color: var(--gold-light);
+      flex-shrink: 0;
+      font-size: 0.95rem;
+    }
+
+    .step-box h3 { color: #fff; font-size: 1rem; margin-bottom: 4px; }
+    .step-box p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+
+    .form-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #1a0800;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(201,168,76,0.35);
+      transition: transform 0.2s;
+      margin-top: 8px;
+      display: block;
+      text-align: center;
+    }
+
+    .form-btn:hover { transform: translateY(-2px); }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #fff !important;
+        padding: 0;
+        display: block;
+      }
+      .no-print { display: none !important; }
+      .receipt {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin: 0;
+        max-width: 100%;
+      }
+      .next-steps { display: none; }
+      h1, .subtitle { display: none; }
+      .check-icon { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="check-icon">✓</div>
+  <h1>Payment Confirmed!</h1>
+  <p class="subtitle">Thank you for joining the $10K A Month Masterclass. Your receipt is below.</p>
+
+  <!-- RECEIPT -->
+  <div class="receipt">
+    <div class="receipt-header">
+      <div class="brand">Regan Hillyer International</div>
+      <div class="receipt-title">Purchase Receipt</div>
+    </div>
+
+    <div class="receipt-row">
+      <span class="label">Product</span>
+      <span class="value">$10K A Month Masterclass</span>
+    </div>
+    <div class="receipt-row">
+      <span class="label">Purchased From</span>
+      <span class="value">Renee Swain</span>
+    </div>
+    <div class="receipt-row">
+      <span class="label">Date</span>
+      <span class="value" id="receipt-date"></span>
+    </div>
+    <div class="receipt-row">
+      <span class="label">Access</span>
+      <span class="value">Mighty Networks Platform<br><small style="font-weight:400;color:#888;">(link sent via email)</small></span>
+    </div>
+
+    <div class="receipt-total">
+      <span class="total-label">Total Paid</span>
+      <span class="total-amount">$97.00 USD</span>
+    </div>
+
+    <div class="receipt-footer">
+      Please save or print this receipt — you'll need it to complete your registration below.<br>
+      support@reganhillyer.com
+    </div>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save Receipt</button>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="next-steps no-print">
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Save your receipt above</h3>
+        <p>Print it or save it as a PDF — you'll need to upload it in the registration form below to get access to the masterclass.</p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Complete your registration</h3>
+        <p>Fill out the form below to receive your access link to the Mighty Networks platform where the full masterclass is hosted. The "Purchased From" field is already filled in for you.</p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc_SVQii4SOsM5-lwsmumGh9Q2fz0wV4raaP4m0WK3-Jz8oQg/viewform?usp=pp_url&entry.601088450=Renee+Swain"
+          target="_blank"
+          class="form-btn"
+        >
+          Complete My Registration →
+        </a>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Check your email</h3>
+        <p>Once your registration is received, you'll get a welcome email with your personal link to access the $10K A Month Masterclass.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set today's date on the receipt
+    const d = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('receipt-date').textContent = d.toLocaleDateString('en-US', options);
+  </script>
+
+</body>
+</html>
